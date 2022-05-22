@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1447</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget {
+	background-color: rgb(87, 87, 98)
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="imgRaw">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>100</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border: 2px solid rgb(188, 188, 196);
+	border-radius: 10px;
+	background-color: rgb(188, 188, 196);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="imgProgressed">
+    <property name="geometry">
+     <rect>
+      <x>536</x>
+      <y>100</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border: 2px solid rgb(188, 188, 196);
+	border-radius: 10px;
+	background-color: rgb(188, 188, 196);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="progressedImage">
+    <property name="geometry">
+     <rect>
+      <x>536</x>
+      <y>64</y>
+      <width>217</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#progressedImage {
+	font-size:24px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>PROCESSED IMAGE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="originalImage">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>64</y>
+      <width>193</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#originalImage {
+	font-size:24px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>ORIGINAL IMAGE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="imgRaw_2">
+    <property name="geometry">
+     <rect>
+      <x>1056</x>
+      <y>100</y>
+      <width>377</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	border: 2px solid rgb(188, 188, 196);
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="resetButton">
+    <property name="geometry">
+     <rect>
+      <x>1144</x>
+      <y>536</y>
+      <width>217</width>
+      <height>49</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	border: 2px solid rgb(188, 188, 196);
+	border-radius: 10px;
+	background-color: rgb(188, 188, 196);
+	color: rgb(87, 87, 98);
+	font-size: 16px
+}</string>
+    </property>
+    <property name="text">
+     <string>RESET</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="gammaSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1191</x>
+      <y>192</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::NoTicks</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="thresholdSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1191</x>
+      <y>232</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gammaLabel">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>192</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#gammaLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Gamma</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thresholdLabel">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>232</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#thresholdLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Threshold</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="value">
+    <property name="geometry">
+     <rect>
+      <x>1056</x>
+      <y>64</y>
+      <width>377</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#value {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Value: </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QSlider" name="gaussianBlurSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1191</x>
+      <y>272</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gaussianbluLabel">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>272</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#gaussianbluLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Gaussian Blur</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxCanny">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>320</y>
+      <width>345</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Canny Edge Detection </string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="maxValueSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1192</x>
+      <y>344</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="maxValueLabel">
+    <property name="geometry">
+     <rect>
+      <x>1065</x>
+      <y>344</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#maxValueLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Max Value</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="minValueLabel">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>384</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#minValueLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Min Value</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="minValueSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1191</x>
+      <y>384</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="scaleSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1192</x>
+      <y>112</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::NoTicks</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="scaleLabel">
+    <property name="geometry">
+     <rect>
+      <x>1065</x>
+      <y>112</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#scaleLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Scale</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="logLabel">
+    <property name="geometry">
+     <rect>
+      <x>1064</x>
+      <y>152</y>
+      <width>113</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#logLabel {
+	font-size:18px;
+	color: rgb(188, 188, 196)
+}</string>
+    </property>
+    <property name="text">
+     <string>Log</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="logSliderHorizontal">
+    <property name="geometry">
+     <rect>
+      <x>1191</x>
+      <y>152</y>
+      <width>217</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QSlider::groove:horizontal {
+    height: 1px;
+    background: white; 
+}
+QSlider::handle:horizontal {
+    width: 30px;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:horizontal:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}
+/*竖向*/
+QSlider:vertical {
+    min-width: 60px;
+}
+QSlider::groove:vertical {
+    width: 1px;
+    background: white; 
+}
+QSlider::handle:vertical {
+    height: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 15px;
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
+}
+QSlider::handle:vertical:hover {
+    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
+}</string>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::NoTicks</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1447</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuPoint_Operators">
+    <property name="title">
+     <string>Point Operators</string>
+    </property>
+    <addaction name="actionReverse"/>
+    <addaction name="actionThreshold"/>
+    <addaction name="actionLog"/>
+    <addaction name="actionGamma"/>
+    <addaction name="actionHistogramEqualization"/>
+   </widget>
+   <widget class="QMenu" name="menuSpatial_Filters">
+    <property name="title">
+     <string>Smoothing Image</string>
+    </property>
+    <addaction name="actionBlur"/>
+    <addaction name="actionBoxFilter"/>
+    <addaction name="actionGaussianFilter"/>
+    <addaction name="actionMedianFilter"/>
+   </widget>
+   <widget class="QMenu" name="menuSharpening">
+    <property name="title">
+     <string>Sharpening Image</string>
+    </property>
+    <addaction name="actionRobertCrossFilter"/>
+    <addaction name="actionSobelFilter"/>
+   </widget>
+   <widget class="QMenu" name="menuEdge_Detection">
+    <property name="title">
+     <string>Edge Detection</string>
+    </property>
+    <addaction name="actionCanny"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuPoint_Operators"/>
+   <addaction name="menuSpatial_Filters"/>
+   <addaction name="menuSharpening"/>
+   <addaction name="menuEdge_Detection"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open...</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDao_Anh">
+   <property name="text">
+    <string>Dao Anh</string>
+   </property>
+  </action>
+  <action name="actionReverse">
+   <property name="text">
+    <string>Reverse</string>
+   </property>
+  </action>
+  <action name="actionThreshold">
+   <property name="text">
+    <string>Threshold</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="text">
+    <string>Log</string>
+   </property>
+  </action>
+  <action name="actionGamma">
+   <property name="text">
+    <string>Gamma </string>
+   </property>
+  </action>
+  <action name="actionGaussianFilter">
+   <property name="text">
+    <string>Gaussian Filter</string>
+   </property>
+  </action>
+  <action name="actionBoxFilter">
+   <property name="text">
+    <string>Box Filter</string>
+   </property>
+  </action>
+  <action name="actionMedianFilter">
+   <property name="text">
+    <string>Median Filter</string>
+   </property>
+  </action>
+  <action name="actionRobertCrossFilter">
+   <property name="text">
+    <string>Robert Cross Filter</string>
+   </property>
+  </action>
+  <action name="actionSobelFilter">
+   <property name="text">
+    <string>Sobel Filter</string>
+   </property>
+  </action>
+  <action name="actionBlur">
+   <property name="text">
+    <string>Blur</string>
+   </property>
+  </action>
+  <action name="actionCanny">
+   <property name="text">
+    <string>Canny</string>
+   </property>
+  </action>
+  <action name="actionHistogramEqualization">
+   <property name="text">
+    <string>Histogram Equalization</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

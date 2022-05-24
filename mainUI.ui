@@ -160,7 +160,7 @@
     <property name="geometry">
      <rect>
       <x>1191</x>
-      <y>192</y>
+      <y>152</y>
       <width>217</width>
       <height>40</height>
      </rect>
@@ -214,7 +214,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1191</x>
-      <y>232</y>
+      <y>192</y>
       <width>217</width>
       <height>40</height>
      </rect>
@@ -262,7 +262,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1064</x>
-      <y>192</y>
+      <y>152</y>
       <width>113</width>
       <height>40</height>
      </rect>
@@ -281,7 +281,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1064</x>
-      <y>232</y>
+      <y>192</y>
       <width>113</width>
       <height>40</height>
      </rect>
@@ -322,7 +322,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1191</x>
-      <y>272</y>
+      <y>232</y>
       <width>217</width>
       <height>40</height>
      </rect>
@@ -370,7 +370,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1064</x>
-      <y>272</y>
+      <y>232</y>
       <width>113</width>
       <height>40</height>
      </rect>
@@ -389,7 +389,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1064</x>
-      <y>320</y>
+      <y>280</y>
       <width>345</width>
       <height>20</height>
      </rect>
@@ -408,7 +408,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1192</x>
-      <y>344</y>
+      <y>304</y>
       <width>217</width>
       <height>40</height>
      </rect>
@@ -456,7 +456,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1065</x>
-      <y>344</y>
+      <y>304</y>
       <width>113</width>
       <height>40</height>
      </rect>
@@ -475,7 +475,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1064</x>
-      <y>384</y>
+      <y>344</y>
       <width>113</width>
       <height>40</height>
      </rect>
@@ -494,7 +494,7 @@ QSlider::handle:vertical:hover {
     <property name="geometry">
      <rect>
       <x>1191</x>
-      <y>384</y>
+      <y>344</y>
       <width>217</width>
       <height>40</height>
      </rect>
@@ -611,79 +611,6 @@ QSlider::handle:vertical:hover {
      <string>Scale</string>
     </property>
    </widget>
-   <widget class="QLabel" name="logLabel">
-    <property name="geometry">
-     <rect>
-      <x>1064</x>
-      <y>152</y>
-      <width>113</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel#logLabel {
-	font-size:18px;
-	color: rgb(188, 188, 196)
-}</string>
-    </property>
-    <property name="text">
-     <string>Log</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="logSliderHorizontal">
-    <property name="geometry">
-     <rect>
-      <x>1191</x>
-      <y>152</y>
-      <width>217</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">
-QSlider::groove:horizontal {
-    height: 1px;
-    background: white; 
-}
-QSlider::handle:horizontal {
-    width: 30px;
-    margin-top: -15px;
-    margin-bottom: -15px;
-    border-radius: 15px;
-    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
-}
-QSlider::handle:horizontal:hover {
-    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
-}
-/*竖向*/
-QSlider:vertical {
-    min-width: 60px;
-}
-QSlider::groove:vertical {
-    width: 1px;
-    background: white; 
-}
-QSlider::handle:vertical {
-    height: 30px;
-    margin-left: -15px;
-    margin-right: -15px;
-    border-radius: 15px;
-    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(210, 210, 210, 255), stop:0.7 rgba(210, 210, 210, 100));
-}
-QSlider::handle:vertical:hover {
-    background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 rgba(255, 255, 255, 255), stop:0.7 rgba(255, 255, 255, 100));
-}</string>
-    </property>
-    <property name="singleStep">
-     <number>1</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::NoTicks</enum>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -717,7 +644,6 @@ QSlider::handle:vertical:hover {
     <property name="title">
      <string>Smoothing Image</string>
     </property>
-    <addaction name="actionBlur"/>
     <addaction name="actionBoxFilter"/>
     <addaction name="actionGaussianFilter"/>
     <addaction name="actionMedianFilter"/>
@@ -729,17 +655,10 @@ QSlider::handle:vertical:hover {
     <addaction name="actionRobertCrossFilter"/>
     <addaction name="actionSobelFilter"/>
    </widget>
-   <widget class="QMenu" name="menuEdge_Detection">
-    <property name="title">
-     <string>Edge Detection</string>
-    </property>
-    <addaction name="actionCanny"/>
-   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuPoint_Operators"/>
    <addaction name="menuSpatial_Filters"/>
    <addaction name="menuSharpening"/>
-   <addaction name="menuEdge_Detection"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">

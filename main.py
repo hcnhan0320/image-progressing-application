@@ -25,6 +25,10 @@ class MainUI(QMainWindow):
         self.full_path_img = ''
         self.img = None
         self.oriImg = None
+        self.scale_value = 1
+        self.gamma_value = None
+        self.gauss_value = None
+
         # crop image
         cropping = False
         x_start, y_start, x_end, y_end = 0, 0, 0, 0
@@ -101,23 +105,23 @@ class MainUI(QMainWindow):
         self.save.triggered.connect(self.save_file)
 
         # action point operators(2)
-        self.reverse.triggered.connect(lambda: self.show_progressed_image(reverse_image(self.img), 1))
-        self.threshold.triggered.connect(lambda: self.show_progressed_image(image_thresholding(self.img, 120), 1))
-        self.log.triggered.connect(lambda: self.show_progressed_image(log_transformation(self.img), 1))
-        self.gamma.triggered.connect(lambda: self.show_progressed_image(gamma_correction(self.img, 0.1), 1))
-        self.histogram_equal.triggered.connect(lambda: self.show_progressed_image(histogram_equalization(self.full_path_img), 1))
+        self.reverse.triggered.connect(lambda: self.show_progressed_image(reverse_image(self.img), self.scale_value))
+        self.threshold.triggered.connect(lambda: self.show_progressed_image(image_thresholding(self.img, 120), self.scale_value))
+        self.log.triggered.connect(lambda: self.show_progressed_image(log_transformation(self.img), self.scale_value))
+        self.gamma.triggered.connect(lambda: self.show_progressed_image(gamma_correction(self.img, 0.1), self.scale_value))
+        self.histogram_equal.triggered.connect(lambda: self.show_progressed_image(histogram_equalization(self.img), self.scale_value))
 
         # action smoothing image(3)
-        self.box_filter.triggered.connect(lambda: self.show_progressed_image(box_blur(self.img, 10), 1))
-        self.gaussian_filter.triggered.connect(lambda: self.show_progressed_image(gaussian_blur(self.img, 0), 1))
-        self.median_filter.triggered.connect(lambda: self.show_progressed_image(median_blur(self.img, 5), 1))
+        self.box_filter.triggered.connect(lambda: self.show_progressed_image(box_blur(self.img, 10), self.scale_value))
+        self.gaussian_filter.triggered.connect(lambda: self.show_progressed_image(gaussian_blur(self.img, 0), self.scale_value))
+        self.median_filter.triggered.connect(lambda: self.show_progressed_image(median_blur(self.img, 5), self.scale_value))
 
         # action sharpening image(4)
-        self.robert_cross_filter.triggered.connect(lambda: self.show_progressed_image(robert_cross_filter(self.img), 1))
-        self.sobel_filter.triggered.connect(lambda: self.show_progressed_image(sobel_filter(self.img), 1))
+        self.robert_cross_filter.triggered.connect(lambda: self.show_progressed_image(robert_cross_filter(self.img), self.scale_value))
+        self.sobel_filter.triggered.connect(lambda: self.show_progressed_image(sobel_filter(self.img), self.scale_value))
 
         # action edge detection (5)
-        self.canny.triggered.connect(lambda: self.show_progressed_image(canna_edge_detection(self.full_path_img), 1))
+        self.canny.triggered.connect(lambda: self.show_progressed_image(canna_edge_detection(self.full_path_img), self.scale_value))
 
         # show the app
         self.show()
@@ -165,6 +169,10 @@ class MainUI(QMainWindow):
 
     def reset_image(self):
         self.show_progressed_image(self.oriImg, 1)
+        self.scaleSlider.setValue(10)
+        self.value_label.setText("Value: 0")
+        self.gamma_value = None
+        self.gauss_value = None
 
     def value_changed_gamma(self, value):
         if self.full_path_img == '':
@@ -174,31 +182,39 @@ class MainUI(QMainWindow):
                 self.alert_message("Value need to be greater than 0!")
             else:
                 self.value_label.setText("Value: " + str(value/10))
-                self.show_progressed_image(gamma_correction(self.oriImg, value/10), 1)
+                imgEdit = self.oriImg
+                if self.gauss_value != None:
+                    imgEdit = gaussian_blur(imgEdit, self.gauss_value)
+                self.show_progressed_image(gamma_correction(imgEdit, value/10), self.scale_value)
+                self.gamma_value = value/10
 
     def value_changed_threshold(self, value):
         if self.full_path_img == '':
             self.alert_message("You need to open image first!")
         else:
             self.value_label.setText("Value: " + str(value))
-            self.show_progressed_image(image_thresholding(self.oriImg, value), 1)
+            self.show_progressed_image(image_thresholding(self.oriImg, value), self.scale_value)
 
     def value_changed_gaussian_blur(self, value):
         if self.full_path_img == '':
             self.alert_message("You need to open image first!")
         else:
             self.value_label.setText("Value: " + str(value))
-            self.show_progressed_image(gaussian_blur(self.oriImg, value), 1)
+            imgEdit = self.oriImg
+            if self.gamma_value != None :
+                imgEdit = gamma_correction(imgEdit, self.gamma_value)
+            self.show_progressed_image(gaussian_blur(imgEdit, value), self.scale_value)
+            self.gauss_value = value
 
     def value_changed_canny(self, value):
         if self.canny_checkbox.isChecked():
             img_gray = cv2.imread(self.full_path_img, 0)
             self.value_label.setText("Value: " + str(value))
             edges = cv2.Canny(img_gray,self.minValueSlider.value(), self.maxValueSlider.value())
-            self.show_progressed_image(edges, 1)
+            self.show_progressed_image(edges, self.scale_value)
         else:
             self.alert_message("Canny is unchecked!")
-            self.show_progressed_image(self.oriImg, 1)
+            self.show_progressed_image(self.img, self.scale_value)
 
     def value_changed_scale(self, value):
         if self.full_path_img == '':
@@ -208,8 +224,10 @@ class MainUI(QMainWindow):
                 self.alert_message("Value need to be greater than 0!")
             else:
                 self.value_label.setText("Value: " + str(value/10))
-                resize_img = cv2.resize(self.oriImg, None, fx=self.scaleSlider.value()/10, fy=self.scaleSlider.value()/10, interpolation=cv2.INTER_CUBIC)
+                resize_img = cv2.resize(self.img, None, fx=self.scaleSlider.value()/10, fy=self.scaleSlider.value()/10, interpolation=cv2.INTER_CUBIC)
                 self.show_progressed_image(resize_img, value/10)
+                self.scale_value = value/10
+                self.img = resize_img
 
     def alert_message(self, alert_msg):
         msg = QMessageBox()
@@ -220,4 +238,4 @@ class MainUI(QMainWindow):
 # init
 app = QApplication(sys.argv)
 UIWindow = MainUI()
-app.exec_() 
+app.exec_()
